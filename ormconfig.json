@@ -1,0 +1,23 @@
+{
+	"type": "postgres",
+	"host": "127.0.0.1",
+	"port": "5432",
+	"username": "meets_api",
+	"password": "devpassword",
+	"database": "meets",
+	"synchronize": false,
+	"dropSchema": false,
+	"logging": true,
+	"entities": [
+		"src/**/*.entity.ts",
+		"dist/**/*.entity.js"
+	],
+	"migrations": [
+		"migrations/**/*.ts",
+		"dist/migrations/**/*.js"
+	],
+	"cli": {
+		"entitiesDir": "src/modules/**/",
+		"migrationsDir": "migrations"
+	}
+}
