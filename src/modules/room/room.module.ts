@@ -6,11 +6,15 @@ import { RoomController } from './room.controller';
 import { RoomRepository } from './room.repository';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([RoomRepository])
-  ],
-  controllers: [RoomController],
-  providers: [RoomService]
+	imports: [
+		TypeOrmModule.forFeature([RoomRepository]),
+	],
+	controllers: [
+		RoomController,
+	],
+	providers: [
+		RoomService,
+	],
 })
 
 export class RoomModule {}

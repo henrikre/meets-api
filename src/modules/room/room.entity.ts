@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { Reservation } from '../reservation/reservation.entity';
 import { MeetsDefaultEntity } from 'src/meets-default.entity';
+import { Event } from '../event/event.entity';
 
 @Entity()
 export class Room extends MeetsDefaultEntity {
@@ -11,7 +11,7 @@ export class Room extends MeetsDefaultEntity {
 	@Column({ nullable: false })
 	name: string;
 
-	@OneToMany(type => Reservation, reservation => reservation.room, { onDelete: 'CASCADE' })
-	reservations: Reservation[];
+	@OneToMany(type => Event, event => event.room, { onDelete: 'CASCADE' })
+	events: Event[];
 
 }

@@ -1,11 +1,11 @@
 import { registerDecorator, ValidationOptions, ValidationArguments } from 'class-validator';
 
 export function IsBefore(property: string, validationOptions?: ValidationOptions) {
-	return function (object: Object, propertyName: string) {
+	return (object: object, propertyName: string) => {
 		registerDecorator({
 			name: 'isBefore',
+			propertyName,
 			target: object.constructor,
-			propertyName: propertyName,
 			constraints: [property],
 			options: validationOptions,
 			validator: {
@@ -13,8 +13,8 @@ export function IsBefore(property: string, validationOptions?: ValidationOptions
 					const [relatedPropertyName] = args.constraints;
 					const relatedValue = (args.object as any)[relatedPropertyName];
 					return new Date(value).valueOf() < new Date(relatedValue).valueOf();
-				}
-			}
+				},
+			},
 		});
 	};
 }

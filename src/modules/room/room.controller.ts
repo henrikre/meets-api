@@ -11,22 +11,22 @@ export class RoomController {
 
 	@Get()
 	getRooms() {
-		return this.roomService.getRooms()
+		return this.roomService.getRooms();
 	}
 
 	@Get('/:id')
-	getRoom(@Param('id', new ParseUuidsPipe()) id: Array<string>) {
-		return this.roomService.getRoom(id)
+	getRoom(@Param('id', new ParseUuidsPipe()) id: string[]) {
+		return this.roomService.getRoom(id);
 	}
 
 	@Post()
 	addRoom(@Body() createRoomDto: CreateRoomDto) {
-		return this.roomService.addRoom(createRoomDto)
+		return this.roomService.addRoom(createRoomDto);
 	}
 
 	@Delete('/:id')
-	deleteRoom(@Param('id', new ParseUuidsPipe()) id: Array<string>) {
-		return this.roomService.deleteRoom(id)
+	deleteRoom(@Param('id', new ParseUuidsPipe()) id: string[]) {
+		return this.roomService.deleteRoom(id);
 	}
 
 }

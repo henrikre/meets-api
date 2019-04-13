@@ -1,6 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
-import { MeetsDefaultEntity } from "src/meets-default.entity";
-import { Participation } from "../participation/participation.entity";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { MeetsDefaultEntity } from 'src/meets-default.entity';
+import { Participation } from '../participation/participation.entity';
 
 @Entity()
 export class User extends MeetsDefaultEntity {
@@ -13,11 +13,11 @@ export class User extends MeetsDefaultEntity {
 
 	@Column({ nullable: false })
 	firstName: string;
-	
+
 	@Column({ nullable: false })
 	lastName: string;
 
 	@OneToMany(type => Participation, participation => participation.user)
-	meetings: Participation[]
+	events: Participation[];
 
 }

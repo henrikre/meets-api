@@ -1,34 +1,34 @@
-import { Entity, Column, ManyToOne } from "typeorm";
-import { MeetsDefaultEntity } from "src/meets-default.entity";
-import { Reservation } from "../reservation/reservation.entity";
-import { User } from "../user/user.entity";
+import { Entity, Column, ManyToOne } from 'typeorm';
+import { MeetsDefaultEntity } from 'src/meets-default.entity';
+import { Event } from '../event/event.entity';
+import { User } from '../user/user.entity';
 
 export type Status
 	=	'Pending'
 	|	'Confirmed'
-	| 'Cancelled'
+	| 'Cancelled';
 
 export type Role
 	= 'Attendee'
-	| 'Organizer'
+	| 'Organizer';
 
 @Entity()
 export class Participation extends MeetsDefaultEntity {
 
 	@Column({ default: 'Pending' })
-	status: Status
+	status: Status;
 
 	@Column({ default: 'Attendee' })
-	role: Role
+	role: Role;
 
-	@ManyToOne(type => User, user => user.meetings, {
-		primary: true
+	@ManyToOne(type => User, user => user.events, {
+		primary: true,
 	})
-	user: User
+	user: User;
 
-	@ManyToOne(type => Reservation, reservation => reservation.participants, {
-		primary: true
+	@ManyToOne(type => Event, event => event.participants, {
+		primary: true,
 	})
-	reservation: Reservation
+	event: Event;
 
 }
